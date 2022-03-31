@@ -1,9 +1,14 @@
 extends Node2D
 
+enum State {
+	s_stand,
+	s_walk,
+	s_run,
+	s_stop,
+	s_jumping,
+}
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var state = State.s_stand
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,12 +20,28 @@ func _process(delta):
 	pass
 
 func _input(event):
-	var ch = get_node("charactor")
-	if Input.is_action_pressed("ch_forward"):
-		ch.animation = "walk"
-	elif Input.is_action_pressed("ch_jump"):
-		ch.animation = "jump"
-#	elif Input.is_action_just_released("ch_forward"):
-#		ch.animation = "stop"
-	else:
-		ch.animation = "stand"
+	var ch = get_node("mario")
+	var jumpPressed = Input.is_action_pressed("ch_jump")
+	var forwardPressed = Input.is_action_pressed("ch_forward")
+	match (state):
+		State.s_stand:
+			if (jumpPressed):
+				ch.animation = "jump"
+			elif (forwardPressed):
+				ch.animation = "walk"
+			else:
+				ch.animation = "stand"
+		State.s_walk:
+			if (jumpPressed):
+				ch.animation = "jump"
+			elif (forwardPressed):
+				ch.animation = "walk"
+			else:
+				ch.animation = "stop"
+		State.s_jumping:
+			if (jumpPressed):
+				ch.animation = "jump"
+			elif (forwardPressed):
+				ch.animation = "walk"
+			else:
+				ch.animation = "stop"
