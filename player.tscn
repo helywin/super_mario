@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://frames/small.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://player.gd" type="Script" id=2]
+
+[sub_resource type="PhysicsMaterial" id=7]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 16, 16 )
+
+[node name="player" type="RigidBody2D"]
+mode = 2
+physics_material_override = SubResource( 7 )
+script = ExtResource( 2 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 6 )
+
+[node name="mario" type="AnimatedSprite" parent="."]
+position = Vector2( 168, 408 )
+frames = ExtResource( 1 )
+animation = "stand"
+speed_scale = 2.0
+playing = true
