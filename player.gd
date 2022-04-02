@@ -9,6 +9,7 @@ enum State {
 }
 
 onready var mario = $mario
+onready var collison = $shape
 
 func _ready():
 	pass # Replace with function body.
@@ -62,11 +63,30 @@ func _integrate_forces(s):
 	var lv = s.get_linear_velocity()
 	var step = s.get_step()
 	for x in range(s.get_contact_count()):
-		var ci = s.get_contact_local_normal(x)
-		if ci.dot(Vector2(0, -1)) > 0.6:
-			lv.y = 0
+		print("collision")
+#		var ci = s.get_contact_local_normal(x)
+#		if ci.dot(Vector2(0, -1)) > 0.6:
+#			
 	if (jump):
-		lv.y = -100;
+		lv.y = -100
+		mario.animation = "jump"
+	if (move_left):
+		mario.scale = Vector2(-1, 1)
+		lv.x = -100
+		mario.animation = "walk"
+	if (move_right):
+		lv.x = 100
+		mario.scale = Vector2(1, 1)
+		mario.animation = "walk"
 	lv += s.get_total_gravity() * step
 	s.set_linear_velocity(lv)
+	if abs(lv.x) < 0.1:
+		mario.animation = "stand"
 	pass
+
+	
+
+
+func _on_player_body_entered(body):
+	print("collision")
+	pass # Replace with function body.

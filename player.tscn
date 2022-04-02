@@ -4,21 +4,25 @@
 [ext_resource path="res://player.gd" type="Script" id=2]
 
 [sub_resource type="PhysicsMaterial" id=7]
+friction = 0.4
+rough = true
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 16, 16 )
+[sub_resource type="RayShape2D" id=8]
+length = 16.0
 
 [node name="player" type="RigidBody2D"]
 mode = 2
 physics_material_override = SubResource( 7 )
 script = ExtResource( 2 )
 
-[node name="shape" type="CollisionShape2D" parent="."]
-shape = SubResource( 6 )
-
 [node name="mario" type="AnimatedSprite" parent="."]
-position = Vector2( 168, 408 )
 frames = ExtResource( 1 )
 animation = "stand"
 speed_scale = 2.0
 playing = true
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -8 )
+shape = SubResource( 8 )
+
+[connection signal="body_entered" from="." to="." method="_on_player_body_entered"]
