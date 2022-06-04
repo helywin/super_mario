@@ -1,19 +1,34 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://frames/small.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://frames/big.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
+[ext_resource path="res://frames/small.tres" type="SpriteFrames" id=3]
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 0, -8 )
 script = ExtResource( 2 )
 
-[node name="mario" type="AnimatedSprite" parent="."]
+[node name="mario_small" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -8 )
+frames = ExtResource( 3 )
+animation = "stand"
+speed_scale = 2.5
+playing = true
+
+[node name="collision_small" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( 0, -8 )
+rotation = 1.5708
+scale = Vector2( 1, -1 )
+polygon = PoolVector2Array( -7.99998, -6.00003, 7.00002, -5.99997, 6.99998, 6.00003, -8.00002, 5.99997 )
+
+[node name="mario_big" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "stand"
 speed_scale = 2.5
 playing = true
 
-[node name="collision" type="CollisionPolygon2D" parent="."]
+[node name="collision_big" type="CollisionPolygon2D" parent="."]
 rotation = 1.5708
 scale = Vector2( 1, -1 )
-polygon = PoolVector2Array( -7.99998, -6.00003, 8.00002, -5.99997, 7.99998, 6.00003, -8.00002, 5.99997 )
+polygon = PoolVector2Array( -16, -7.00006, 15, -6.99995, 15, 7.00005, -16, 6.99994 )
