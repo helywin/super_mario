@@ -1,28 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://frames/small.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
 
-[sub_resource type="PhysicsMaterial" id=7]
-friction = 0.0
-
-[sub_resource type="RayShape2D" id=8]
-length = 8.0
-
-[sub_resource type="RayShape2D" id=9]
-length = 8.0
-
-[sub_resource type="RayShape2D" id=11]
-length = 6.0
-
-[sub_resource type="RayShape2D" id=10]
-length = 6.0
-
-[node name="player" type="RigidBody2D"]
+[node name="player" type="KinematicBody2D"]
 position = Vector2( 0, -8 )
-mode = 2
-physics_material_override = SubResource( 7 )
-contacts_reported = 8
 script = ExtResource( 2 )
 
 [node name="mario" type="AnimatedSprite" parent="."]
@@ -31,33 +13,7 @@ animation = "stand"
 speed_scale = 2.5
 playing = true
 
-[node name="buttom" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource( 8 )
-disabled = true
-one_way_collision_margin = 10.0
-
-[node name="top" type="CollisionShape2D" parent="."]
-visible = false
-scale = Vector2( 1, -1 )
-shape = SubResource( 9 )
-disabled = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="collision" type="CollisionPolygon2D" parent="."]
 rotation = 1.5708
 scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( -7.99998, -6.00003, 8.00002, -5.99997, 7.99998, 6.00003, -8.00002, 5.99997 )
-
-[node name="left" type="CollisionShape2D" parent="."]
-visible = false
-rotation = -1.5708
-scale = Vector2( 1, -1 )
-shape = SubResource( 11 )
-disabled = true
-
-[node name="right" type="CollisionShape2D" parent="."]
-visible = false
-rotation = 1.5708
-scale = Vector2( 1, -1 )
-shape = SubResource( 10 )
-disabled = true

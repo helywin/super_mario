@@ -1,10 +1,6 @@
 extends Node2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 onready var camera = $Camera2D
 onready var ui = $UI
 onready var timer = $Timer
@@ -20,7 +16,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
-#	pass
+#    pass
 
 
 
