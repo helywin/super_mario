@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/smb-castle.mp3-40a1ea0125ec586c67b8140f47ace8d6.mp3str"
+
+[deps]
+
+source_file="res://bgm/smb-castle.mp3"
+dest_files=[ "res://.import/smb-castle.mp3-40a1ea0125ec586c67b8140f47ace8d6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

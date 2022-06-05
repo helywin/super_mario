@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://frames/big.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
 [ext_resource path="res://frames/small.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://sound/smb_jump-small.wav" type="AudioStream" id=4]
+[ext_resource path="res://sound/smb_jump-super.wav" type="AudioStream" id=5]
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 0, -8 )
@@ -32,3 +34,9 @@ playing = true
 rotation = 1.5708
 scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( -16, -7.00006, 15, -6.99995, 15, 7.00005, -16, 6.99994 )
+
+[node name="small_jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="big_jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )

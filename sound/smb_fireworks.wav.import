@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/smb_fireworks.wav-2c4142ee1424a89438a72d454c62fdee.sample"
+
+[deps]
+
+source_file="res://sound/smb_fireworks.wav"
+dest_files=[ "res://.import/smb_fireworks.wav-2c4142ee1424a89438a72d454c62fdee.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

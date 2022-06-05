@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/smb_powerup_appears.wav-a659e7091087bc3a3c1439b9bb810b83.sample"
+
+[deps]
+
+source_file="res://sound/smb_powerup_appears.wav"
+dest_files=[ "res://.import/smb_powerup_appears.wav-a659e7091087bc3a3c1439b9bb810b83.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

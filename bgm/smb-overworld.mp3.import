@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/smb-overworld.mp3-2c0febde4459042632a2007d62bb7881.mp3str"
+
+[deps]
+
+source_file="res://bgm/smb-overworld.mp3"
+dest_files=[ "res://.import/smb-overworld.mp3-2c0febde4459042632a2007d62bb7881.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

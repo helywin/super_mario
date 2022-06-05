@@ -1,9 +1,11 @@
 extends Node2D
 
-
 onready var camera = $Camera2D
-onready var ui = $UI
+onready var hud = $HUD
 onready var timer = $Timer
+onready var player = $Player
+onready var system = $System
+
 var start_time
 var time_left
 
@@ -11,19 +13,16 @@ var time_left
 func _ready():
 	start_time = OS.get_system_time_secs()
 	timer.start(1)
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
-
+	player.connect("position_changed", system, "set_player_position")
+	timer.connect("timeout", self, "_on_Timer_timeout")
+	system.connect("time_remain_changed", hud, "set_time")
+	system.connect("player_position_changed", self, "_on_player_position_changed")
 
 
 func _on_player_position_changed(pos : Vector2):
 	camera.position.x = pos.x - 128
-	ui.rect_position.x = pos.x - 128
-	pass # Replace with function body.
+	hud.rect_position.x = pos.x - 128
 
 onready var viewport = get_viewport()
 	
@@ -49,5 +48,4 @@ func _screen_resized():
 
 func _on_Timer_timeout():
 	time_left = 360 - (OS.get_system_time_secs() - start_time)
-	ui.set_time(time_left)
-	pass # Replace with function body.
+	system.set_time(time_left)

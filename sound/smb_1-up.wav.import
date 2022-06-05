@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/smb_1-up.wav-574b01c0379cb65b469511ec88c323ad.sample"
+
+[deps]
+
+source_file="res://sound/smb_1-up.wav"
+dest_files=[ "res://.import/smb_1-up.wav-574b01c0379cb65b469511ec88c323ad.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

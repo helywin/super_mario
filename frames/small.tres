@@ -14,9 +14,9 @@ animations = [ {
 "name": "stop",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "stand",
+"name": "jump",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
@@ -24,8 +24,8 @@ animations = [ {
 "name": "walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "jump",
+"name": "stand",
 "speed": 5.0
 } ]

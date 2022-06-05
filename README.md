@@ -2,6 +2,12 @@
 
 贴图：https://www.spriters-resource.com/nes/supermariobros/
 
+TRACK：https://www.mariomayhem.com/downloads/sounds/super_mario_bros_nes_sounds.php
+
+https://themushroomkingdom.net/
+
+
+
 ## 状态
 
 在地面：速度y=0，y'=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/smb_pause.wav-46df15176b338e57fde7e0fec1b636f3.sample"
+
+[deps]
+
+source_file="res://sound/smb_pause.wav"
+dest_files=[ "res://.import/smb_pause.wav-46df15176b338e57fde7e0fec1b636f3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

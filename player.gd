@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var mario
 var collison
+var jump_sound
 
 export (float) var PHYSIC_ACC_NORMAL = 3      # 非加速状态加速度
 export (float) var PHYSIC_ACC_AIR = 1.5      # 空中非加速状态加速度
@@ -55,11 +56,13 @@ func _ready():
 		0: 
 			mario = $mario_small
 			collison = $collision_small
+			jump_sound = $small_jump
 			$mario_big.visible = false
 			$collision_big.disabled = true
 		1:
 			mario = $mario_big
 			collison = $collision_big
+			jump_sound = $big_jump
 			$mario_small.visible = false
 			$collision_small.disabled = true
 	pass # Replace with function body.
@@ -80,6 +83,7 @@ func _physics_process(delta):
 			jump_hold = true
 			jumping = true
 			velocity.y = -(PHYSIC_JUMP_Y_SPEED + (PHYSIC_JUMP_X_RATIO * abs(velocity.x)))
+			jump_sound.play()
 	if not jump:
 		jump_hold = false
 	if not jumping and not is_on_floor() and jump:

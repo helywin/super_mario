@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=2]
 [ext_resource path="res://img/tileset.png" type="Texture" id=3]
-[ext_resource path="res://Main.gd" type="Script" id=4]
+[ext_resource path="res://main.gd" type="Script" id=4]
 [ext_resource path="res://background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://blocks/CoinBrick.tscn" type="PackedScene" id=6]
 [ext_resource path="res://blocks/Brick.tscn" type="PackedScene" id=7]
+[ext_resource path="res://system.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -386,7 +387,6 @@ extents = Vector2( 1291.05, 16.5161 )
 script = ExtResource( 4 )
 
 [node name="background" type="Node2D" parent="."]
-position = Vector2( 0, -1 )
 
 [node name="group" parent="background" instance=ExtResource( 5 )]
 position = Vector2( 768, 0 )
@@ -416,7 +416,7 @@ tile_data = PoolIntArray( -327482, 23, 0, -261946, 24, 0, -196410, 24, 0, -13106
 [node name="Bricks" type="Node" parent="Level1"]
 
 [node name="CoinBrick" parent="Level1/Bricks" instance=ExtResource( 6 )]
-position = Vector2( 266, 152 )
+position = Vector2( 264, 152 )
 scale = Vector2( 1, 0.938477 )
 
 [node name="Brick2" parent="Level1/Bricks" instance=ExtResource( 7 )]
@@ -664,7 +664,7 @@ __meta__ = {
 "_editor_description_": "地面"
 }
 
-[node name="player" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 136, 201 )
 PHYSIC_JUMP_Y_SPEED = 200.0
 
@@ -675,7 +675,6 @@ current = true
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="UI" parent="." instance=ExtResource( 2 )]
+[node name="HUD" parent="." instance=ExtResource( 2 )]
 
-[connection signal="position_changed" from="player" to="." method="_on_player_position_changed"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[node name="System" parent="." instance=ExtResource( 9 )]
