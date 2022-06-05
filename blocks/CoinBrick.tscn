@@ -19,10 +19,11 @@ extents = Vector2( 8, 8 )
 
 [node name="CoinBrick" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 3
+frame = 4
 playing = true
 
 [node name="Brick" type="Sprite" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
