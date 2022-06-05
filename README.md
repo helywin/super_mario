@@ -1,3 +1,11 @@
+## 说明
+
+Godot实现super mario bros
+
+demo地址：https://super-mario-release-helywin.vercel.app/ （加载速度比较慢）
+
+## 资源
+
 动力学参数：https://www.marioforever.net/thread-335-1-1.html
 
 贴图：https://www.spriters-resource.com/nes/supermariobros/

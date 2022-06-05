@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://hud.tscn" type="PackedScene" id=2]
@@ -7,7 +7,13 @@
 [ext_resource path="res://background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://blocks/CoinBrick.tscn" type="PackedScene" id=6]
 [ext_resource path="res://blocks/Brick.tscn" type="PackedScene" id=7]
+[ext_resource path="res://icon/arrow.png" type="Texture" id=8]
 [ext_resource path="res://system.tscn" type="PackedScene" id=9]
+[ext_resource path="res://icon/x.png" type="Texture" id=10]
+[ext_resource path="res://icon/y.png" type="Texture" id=11]
+[ext_resource path="res://icon/b.png" type="Texture" id=12]
+[ext_resource path="res://icon/a.png" type="Texture" id=13]
+[ext_resource path="res://touch.gd" type="Script" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -372,7 +378,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 24/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 1165.7, 16.5161 )
+extents = Vector2( 1172.14, 16.5161 )
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 237.825, 16.5161 )
@@ -582,7 +588,7 @@ scale = Vector2( 1, 0.938477 )
 [node name="solid" type="StaticBody2D" parent="Level1"]
 
 [node name="ground" type="CollisionShape2D" parent="Level1/solid"]
-position = Vector2( 555.031, 224 )
+position = Vector2( 552, 224 )
 scale = Vector2( 0.470935, 0.96875 )
 shape = SubResource( 10 )
 __meta__ = {
@@ -669,7 +675,7 @@ position = Vector2( 136, 201 )
 PHYSIC_JUMP_Y_SPEED = 200.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, 208 )
+position = Vector2( 0, 267 )
 offset = Vector2( 128, -88 )
 current = true
 
@@ -677,4 +683,59 @@ current = true
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 
+[node name="Touch" type="Node2D" parent="HUD"]
+script = ExtResource( 14 )
+
+[node name="up" type="TouchScreenButton" parent="HUD/Touch"]
+position = Vector2( 48, 248 )
+scale = Vector2( 0.16, 0.16 )
+normal = ExtResource( 8 )
+
+[node name="down" type="TouchScreenButton" parent="HUD/Touch"]
+position = Vector2( 80, 344 )
+rotation = 3.14159
+scale = Vector2( 0.16, 0.16 )
+normal = ExtResource( 8 )
+
+[node name="right" type="TouchScreenButton" parent="HUD/Touch"]
+position = Vector2( 112, 280 )
+rotation = 1.5708
+scale = Vector2( 0.16, 0.16 )
+normal = ExtResource( 8 )
+
+[node name="left" type="TouchScreenButton" parent="HUD/Touch"]
+position = Vector2( 16, 312 )
+rotation = -1.5708
+scale = Vector2( 0.16, 0.16 )
+normal = ExtResource( 8 )
+
+[node name="x" type="TouchScreenButton" parent="HUD/Touch"]
+position = Vector2( 144, 280 )
+scale = Vector2( 0.16, 0.16 )
+normal = ExtResource( 10 )
+
+[node name="y" type="TouchScreenButton" parent="HUD/Touch"]
+position = Vector2( 176, 248 )
+scale = Vector2( 0.16, 0.16 )
+normal = ExtResource( 11 )
+
+[node name="a" type="TouchScreenButton" parent="HUD/Touch"]
+position = Vector2( 176, 312 )
+scale = Vector2( 0.16, 0.16 )
+normal = ExtResource( 13 )
+
+[node name="b" type="TouchScreenButton" parent="HUD/Touch"]
+position = Vector2( 208, 280 )
+scale = Vector2( 0.16, 0.16 )
+normal = ExtResource( 12 )
+
 [node name="System" parent="." instance=ExtResource( 9 )]
+
+[connection signal="pressed" from="HUD/Touch/up" to="HUD/Touch" method="_on_up_pressed"]
+[connection signal="released" from="HUD/Touch/up" to="HUD/Touch" method="_on_up_released"]
+[connection signal="pressed" from="HUD/Touch/right" to="HUD/Touch" method="_on_right_pressed"]
+[connection signal="released" from="HUD/Touch/right" to="HUD/Touch" method="_on_right_released"]
+[connection signal="pressed" from="HUD/Touch/left" to="HUD/Touch" method="_on_left_pressed"]
+[connection signal="released" from="HUD/Touch/left" to="HUD/Touch" method="_on_left_released"]
+[connection signal="pressed" from="HUD/Touch/a" to="HUD/Touch" method="_on_a_pressed"]
+[connection signal="released" from="HUD/Touch/a" to="HUD/Touch" method="_on_a_released"]

@@ -5,12 +5,15 @@ onready var hud = $HUD
 onready var timer = $Timer
 onready var player = $Player
 onready var system = $System
+onready var viewport = get_viewport()
 
 var start_time
 var time_left
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	if OS.get_name() == "HTML5":
 	start_time = OS.get_system_time_secs()
 	timer.start(1)
 
@@ -24,12 +27,12 @@ func _on_player_position_changed(pos : Vector2):
 	camera.position.x = pos.x - 128
 	hud.rect_position.x = pos.x - 128
 
-onready var viewport = get_viewport()
+
 	
 
 func _screen_resized():
 	var window_size = OS.get_window_size()
-
+	print(window_size)
 	# see how big the window is compared to the viewport size
 	# floor it so we only get round numbers (0, 1, 2, 3 ...)
 	var scale_x = floor(window_size.x / viewport.size.x)
