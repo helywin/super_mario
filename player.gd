@@ -43,6 +43,7 @@ signal position_changed(position)
 
 # 是否是跳跃中
 var jumping = false
+var jump_hold = false
 # 人物的速度
 var velocity = Vector2(0,0)
 
@@ -75,8 +76,14 @@ func _physics_process(delta):
 	var jump = Input.is_action_pressed("jump")
 
 	if jump and is_on_floor():
-		jumping = true
-		velocity.y = -(PHYSIC_JUMP_Y_SPEED + (PHYSIC_JUMP_X_RATIO * abs(velocity.x)))
+		if not jump_hold:
+			jump_hold = true
+			jumping = true
+			velocity.y = -(PHYSIC_JUMP_Y_SPEED + (PHYSIC_JUMP_X_RATIO * abs(velocity.x)))
+	if not jump:
+		jump_hold = false
+	if not jumping and not is_on_floor() and jump:
+		jump_hold = true
 	if left:
 		if is_on_floor():
 			if mario.scale.x != -1:
