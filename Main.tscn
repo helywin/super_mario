@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://hud.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://icon/b.png" type="Texture" id=12]
 [ext_resource path="res://icon/a.png" type="Texture" id=13]
 [ext_resource path="res://touch.gd" type="Script" id=14]
+[ext_resource path="res://blocks/Flag.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -389,6 +390,12 @@ extents = Vector2( 1087.2, 16.5161 )
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 1291.05, 16.5161 )
 
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 35.4756, 8.69355 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 2.12355, 74.3226 )
+
 [node name="Main" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -670,6 +677,22 @@ __meta__ = {
 "_editor_description_": "地面"
 }
 
+[node name="rock" type="CollisionShape2D" parent="Level1/solid"]
+position = Vector2( 3176.13, 199.841 )
+scale = Vector2( 0.22178, 0.938477 )
+shape = SubResource( 14 )
+__meta__ = {
+"_editor_description_": "地面"
+}
+
+[node name="flag" type="CollisionShape2D" parent="Level1/solid"]
+position = Vector2( 3176, 120 )
+scale = Vector2( 0.470935, 0.96875 )
+shape = SubResource( 15 )
+__meta__ = {
+"_editor_description_": "地面"
+}
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 136, 201 )
 PHYSIC_JUMP_Y_SPEED = 200.0
@@ -730,6 +753,9 @@ scale = Vector2( 0.16, 0.16 )
 normal = ExtResource( 12 )
 
 [node name="System" parent="." instance=ExtResource( 9 )]
+
+[node name="Flag" parent="." instance=ExtResource( 15 )]
+position = Vector2( 3168, 57 )
 
 [connection signal="pressed" from="HUD/Touch/up" to="HUD/Touch" method="_on_up_pressed"]
 [connection signal="released" from="HUD/Touch/up" to="HUD/Touch" method="_on_up_released"]
