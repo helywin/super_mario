@@ -18,9 +18,11 @@ func _ready():
 	timer.start(1)
 
 	player.connect("position_changed", system, "set_player_position")
+	player.connect("add_coin", system, "add_coin")
 	timer.connect("timeout", self, "_on_Timer_timeout")
 	system.connect("time_remain_changed", hud, "set_time")
 	system.connect("player_position_changed", self, "_on_player_position_changed")
+	system.connect("coin_changed", hud, "set_coin")
 
 
 func _on_player_position_changed(pos : Vector2):

@@ -8,16 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "StaticBody2D",
-"class": "CoinBrick",
-"language": "GDScript",
-"path": "res://blocks/CoinBrick.gd"
-} ]
-_global_script_class_icons={
-"CoinBrick": ""
-}
-
 [application]
 
 config/name="Super Mario"

@@ -38,6 +38,7 @@ func _get_property_list():
 	return properties
 
 signal position_changed(position)
+signal add_coin(coin)
 # 公式
 # 纵向速度 = 动态速度 + 0.2 * 关卡引力值
 # 起跳瞬间动态速度 = -(基础值+陆上绿果增益+横向速度增益系数*瞬间横向速度）
@@ -83,8 +84,8 @@ func _physics_process(delta):
 		if is_on_ceiling():
 			var collider = get_slide_collision(i).collider;
 			if collider.get_parent().get_name() == "CoinBricks":
-				collider.hit()
-				print(collider.get_class())
+				if collider.hit():
+					emit_signal("add_coin", 1)
 
 	if jump and is_on_floor():
 		if not jump_hold:
