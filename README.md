@@ -2,7 +2,7 @@
 
 Godot实现super mario bros
 
-demo地址：https://super-mario-release-helywin.vercel.app/ （加载速度比较慢）
+demo地址：[mario.helywin.com](http://mario.helywin.com) （加载速度比较慢）
 
 ## 资源
 

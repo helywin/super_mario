@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Super Mario"
-run/main_scene="res://main.tscn"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -23,7 +23,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/midi/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [importer_defaults]
 
