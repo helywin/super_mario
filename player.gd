@@ -46,7 +46,7 @@ signal position_changed(position)
 var jumping = false
 var jump_hold = false
 # 人物的速度
-var velocity = Vector2(0,0)
+export (Vector2) var velocity = Vector2(0,0)
 
 func is_dead():
 	return false
@@ -77,6 +77,14 @@ func _physics_process(delta):
 	var left = Input.is_action_pressed("move_left")
 	var right = Input.is_action_pressed("move_right")
 	var jump = Input.is_action_pressed("jump")
+	
+	
+	for i in get_slide_count():
+		if is_on_ceiling():
+			var collider = get_slide_collision(i).collider;
+			if collider.get_parent().get_name() == "CoinBricks":
+				collider.hit()
+				print(collider.get_class())
 
 	if jump and is_on_floor():
 		if not jump_hold:

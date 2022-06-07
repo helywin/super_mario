@@ -8,6 +8,8 @@
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 0, -8 )
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="mario_small" type="AnimatedSprite" parent="."]
@@ -18,11 +20,10 @@ speed_scale = 2.5
 playing = true
 
 [node name="collision_small" type="CollisionPolygon2D" parent="."]
-visible = false
 position = Vector2( 0, -8 )
 rotation = 1.5708
 scale = Vector2( 1, -1 )
-polygon = PoolVector2Array( -7.99998, -6.00003, 7.00002, -5.99997, 6.99998, 6.00003, -8.00002, 5.99997 )
+polygon = PoolVector2Array( -6.99998, -6.00003, 7.00002, -5.99997, 6.99998, 6.00003, -8.00002, 5.99997, -8.00001, 2.99997, -7.00001, 1.99997 )
 
 [node name="mario_big" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
@@ -33,7 +34,7 @@ playing = true
 [node name="collision_big" type="CollisionPolygon2D" parent="."]
 rotation = 1.5708
 scale = Vector2( 1, -1 )
-polygon = PoolVector2Array( -16, -7.00006, 15, -6.99995, 15, 7.00005, -16, 6.99994 )
+polygon = PoolVector2Array( -15, -7.00005, 15, -6.99995, 15, 7.00005, -16, 6.99994, -16, 3.99994, -15, 2.99995 )
 
 [node name="small_jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
