@@ -8,14 +8,10 @@ onready var player = $Player
 onready var system = $System
 onready var viewport = get_viewport()
 
-var start_time
-var time_left
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	if OS.get_name() == "HTML5":
-	start_time = OS.get_system_time_secs()
 	timer.start(1)
 	player.connect("position_changed", system, "set_player_position")
 	player.connect("add_coin", system, "add_coin")
@@ -57,7 +53,3 @@ func _screen_resized():
 	# attach the viewport to the rect we calculated
 	viewport.set_attach_to_screen_rect(Rect2(diffhalf, viewport.size * scale))
 
-
-func _on_Timer_timeout():
-	time_left = 360 - (OS.get_system_time_secs() - start_time)
-	system.set_time(time_left)

@@ -93,7 +93,6 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-	print(mario.position)
 	if dead:
 		return
 	
