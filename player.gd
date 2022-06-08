@@ -81,11 +81,13 @@ func _physics_process(delta):
 	
 	
 	for i in get_slide_count():
+		var collider = get_slide_collision(i).collider;
 		if is_on_ceiling():
-			var collider = get_slide_collision(i).collider;
 			if collider.get_parent().get_name() == "CoinBricks":
 				if collider.hit():
 					emit_signal("add_coin", 1)
+		if collider.get_parent().get_name() == "Enemies":
+			collider.die()
 
 	if jump and is_on_floor():
 		if not jump_hold:
