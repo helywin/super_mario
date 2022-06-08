@@ -2,6 +2,7 @@ extends Node2D
 
 onready var camera = $Camera2D
 onready var hud = $HUD
+onready var start = $Start
 onready var timer = $Timer
 onready var player = $Player
 onready var system = $System
@@ -16,18 +17,24 @@ func _ready():
 #	if OS.get_name() == "HTML5":
 	start_time = OS.get_system_time_secs()
 	timer.start(1)
-
 	player.connect("position_changed", system, "set_player_position")
 	player.connect("add_coin", system, "add_coin")
+	player.connect("dead_begin", system, "on_player_dead_begin")
 	timer.connect("timeout", self, "_on_Timer_timeout")
 	system.connect("time_remain_changed", hud, "set_time")
 	system.connect("player_position_changed", self, "_on_player_position_changed")
 	system.connect("coin_changed", hud, "set_coin")
+	system.connect("coin_changed", start, "set_coin")
+	system.connect("show_ui", start, "show")
+	system.connect("close_ui", start, "hide")
+	system.connect("timeout_dead", player, "die")
+	system.connect("reborn", player, "reborn")
 
 
 func _on_player_position_changed(pos : Vector2):
 	camera.position.x = pos.x - 128
 	hud.rect_position.x = pos.x - 128
+	start.rect_position.x = pos.x - 128
 
 
 	

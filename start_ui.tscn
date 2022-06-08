@@ -1,0 +1,127 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://texture/items/coin_ui1.tres" type="Texture" id=1]
+[ext_resource path="res://start_ui.gd" type="Script" id=2]
+[ext_resource path="res://texture/charactor/small/stand.tres" type="Texture" id=3]
+[ext_resource path="res://font/dfont.tres" type="DynamicFont" id=4]
+
+[node name="UI" type="Control"]
+margin_right = 256.0
+margin_bottom = 240.0
+script = ExtResource( 2 )
+
+[node name="bg" type="ColorRect" parent="."]
+margin_right = 256.0
+margin_bottom = 240.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Name" type="Label" parent="."]
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 64.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 4 )
+text = "MARIO"
+
+[node name="Score" type="Label" parent="."]
+margin_left = 18.0
+margin_top = 24.0
+margin_right = 74.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 4 )
+text = "000000"
+align = 1
+
+[node name="WorldLabel" type="Label" parent="."]
+margin_left = 144.0
+margin_top = 16.0
+margin_right = 184.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 4 )
+text = "WORLD"
+align = 1
+
+[node name="WorldLabel2" type="Label" parent="."]
+margin_left = 78.0
+margin_top = 77.0
+margin_right = 118.0
+margin_bottom = 85.0
+custom_fonts/font = ExtResource( 4 )
+text = "WORLD"
+align = 1
+
+[node name="World" type="Label" parent="."]
+margin_left = 144.0
+margin_top = 24.0
+margin_right = 184.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 4 )
+text = "1-1"
+align = 1
+
+[node name="World2" type="Label" parent="."]
+margin_left = 130.0
+margin_top = 77.0
+margin_right = 170.0
+margin_bottom = 85.0
+custom_fonts/font = ExtResource( 4 )
+text = "1-1"
+align = 1
+
+[node name="TimeLabel" type="Label" parent="."]
+margin_left = 200.0
+margin_top = 16.0
+margin_right = 232.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 4 )
+text = "TIME"
+align = 1
+
+[node name="Plus" type="Label" parent="."]
+margin_left = 88.0
+margin_top = 24.0
+margin_right = 96.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 4 )
+text = "×"
+align = 2
+
+[node name="Coin" type="Label" parent="."]
+margin_left = 96.0
+margin_top = 24.0
+margin_right = 112.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 4 )
+text = "00"
+align = 2
+
+[node name="CoinImg" type="TextureRect" parent="."]
+margin_left = 81.0
+margin_top = 23.0
+margin_right = 89.0
+margin_bottom = 31.0
+texture = ExtResource( 1 )
+
+[node name="mario" type="TextureRect" parent="."]
+margin_left = 89.0
+margin_top = 102.0
+margin_right = 105.0
+margin_bottom = 118.0
+texture = ExtResource( 3 )
+
+[node name="Plus2" type="Label" parent="."]
+margin_left = 119.0
+margin_top = 108.0
+margin_right = 127.0
+margin_bottom = 116.0
+custom_fonts/font = ExtResource( 4 )
+text = "X"
+
+[node name="Life" type="Label" parent="."]
+margin_left = 141.0
+margin_top = 108.0
+margin_right = 149.0
+margin_bottom = 116.0
+custom_fonts/font = ExtResource( 4 )
+text = "1"
+align = 2

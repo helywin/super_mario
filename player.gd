@@ -16,7 +16,8 @@ export (float) var PHYSIC_MAX_X_SPEED_SWIM_BOOST = 3  # 加速状态游泳最大
 export (float) var PHYSIC_MAX_Y_SPEED_SWIM_DYNAMIC = 6  # 陆地最大速度
 export (float) var PHYSIC_STOP_RATIO = 1.05            # 陆地每帧减速比值
 export (float) var PHYSIC_SWIM_STOP_RATIO = 1.03    # 游泳每帧减速比值
-export (float) var PHYSIC_JUMP_Y_SPEED = 180 # 陆地起跳初始速度
+export (float) var PHYSIC_JUMP_Y_SPEED = 200 # 陆地起跳初始速度
+export (float) var PHYSIC_HIT_ENEMIES_Y_SPEED = 180 # 踩到怪起跳速度
 export (float) var PHYSIC_JUMP_Y_SPEED_ON_WATER = 6 # 水面起跳初始速度
 export (float) var PHYSIC_JUMP_Y_SPEED_WATER = 4 # 水里起跳初始速度
 export (float) var PHYSIC_GRAVITY = 20 # 引力
@@ -39,6 +40,7 @@ func _get_property_list():
 
 signal position_changed(position)
 signal add_coin(coin)
+signal dead_begin()
 # 公式
 # 纵向速度 = 动态速度 + 0.2 * 关卡引力值
 # 起跳瞬间动态速度 = -(基础值+陆上绿果增益+横向速度增益系数*瞬间横向速度）
@@ -49,8 +51,24 @@ var jump_hold = false
 # 人物的速度
 export (Vector2) var velocity = Vector2(0,0)
 
-func is_dead():
-	return false
+var dead = false
+var reborned = false
+
+func die():
+	collison.disabled = true
+	mario.animation = "die"
+	$die.play()
+	dead = true
+	emit_signal("dead_begin")
+	$dead_anime.play("die")
+	
+func reborn(var pos: Vector2):
+	collison.disabled = false
+	mario.animation = "stand"
+	dead = false
+	reborned = true
+	position = pos
+	mario.position = Vector2(0,0)
 
 func _ready():
 	match CHARACTOR_TYPE:
@@ -75,10 +93,13 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
+	print(mario.position)
+	if dead:
+		return
+	
 	var left = Input.is_action_pressed("move_left")
 	var right = Input.is_action_pressed("move_right")
 	var jump = Input.is_action_pressed("jump")
-	
 	
 	for i in get_slide_count():
 		var collider = get_slide_collision(i).collider;
@@ -87,8 +108,21 @@ func _physics_process(delta):
 				if collider.hit():
 					emit_signal("add_coin", 1)
 		if collider.get_parent().get_name() == "Enemies":
-			collider.die()
-
+			var normal = get_slide_collision(i).normal
+			if abs(normal.x) > abs(normal.y):
+				if reborned:
+					# 防止无限死亡
+					reborned = false
+				else:
+					print("mario die")
+					die()
+					return
+			else:
+				collider.die()
+				velocity.y = -PHYSIC_HIT_ENEMIES_Y_SPEED
+	if position.y > 240:
+		die()
+		return
 	if jump and is_on_floor():
 		if not jump_hold:
 			jump_hold = true

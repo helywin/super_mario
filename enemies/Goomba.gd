@@ -22,10 +22,11 @@ func activate():
 func die():
 	if not dead:
 		print("dead")
+		$CollisionPolygon2D.disabled = true
 		dead = true
 		$Sprite.animation = "dead"
-		$CollisionPolygon2D.disabled = true
 		position.y += 4
+		$Timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -35,3 +36,8 @@ func _physics_process(delta):
 				velocity.x = - direction * VELOCITY_X
 				direction = -direction
 		velocity = move_and_slide(velocity, Vector2(0, -1))
+
+
+func _on_Timer_timeout():
+	queue_free()
+	pass # Replace with function body.

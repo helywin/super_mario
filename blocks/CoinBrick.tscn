@@ -114,7 +114,7 @@ texture = ExtResource( 7 )
 
 [node name="CoinBrick" type="AnimatedSprite" parent="Origin"]
 frames = SubResource( 1 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Brick" type="Sprite" parent="Origin"]

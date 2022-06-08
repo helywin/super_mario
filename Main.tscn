@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://hud.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://touch.gd" type="Script" id=14]
 [ext_resource path="res://blocks/Flag.tscn" type="PackedScene" id=15]
 [ext_resource path="res://enemies/Goomba.tscn" type="PackedScene" id=16]
+[ext_resource path="res://start_ui.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -595,9 +596,9 @@ scale = Vector2( 1, 0.938477 )
 position = Vector2( 2728, 152 )
 scale = Vector2( 1, 0.938477 )
 
-[node name="solid" type="StaticBody2D" parent="Level1"]
+[node name="Solids" type="StaticBody2D" parent="Level1"]
 
-[node name="ground" type="CollisionShape2D" parent="Level1/solid"]
+[node name="ground" type="CollisionShape2D" parent="Level1/Solids"]
 position = Vector2( 552, 224 )
 scale = Vector2( 0.470935, 0.96875 )
 shape = SubResource( 10 )
@@ -605,7 +606,7 @@ __meta__ = {
 "_editor_description_": "地面"
 }
 
-[node name="block" type="CollisionPolygon2D" parent="Level1/solid"]
+[node name="block" type="CollisionPolygon2D" parent="Level1/Solids"]
 position = Vector2( 0, 45.2813 )
 scale = Vector2( 1, 0.938477 )
 polygon = PoolVector2Array( 128, -48.2497, 128, 173.386, 104, 173.386, 104, -48.2497 )
@@ -613,21 +614,21 @@ __meta__ = {
 "_editor_description_": "空气墙"
 }
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1/solid"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level1/Solids"]
 polygon = PoolVector2Array( 451, 176, 451, 208, 477, 208, 477, 176 )
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level1/solid"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level1/Solids"]
 polygon = PoolVector2Array( 611, 160, 611, 208, 637, 208, 637, 160 )
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Level1/solid"]
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Level1/Solids"]
 position = Vector2( 128, 0 )
 polygon = PoolVector2Array( 611, 144, 611, 208, 637, 208, 637, 144 )
 
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Level1/solid"]
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Level1/Solids"]
 position = Vector2( 304, 0 )
 polygon = PoolVector2Array( 611, 144, 611, 208, 637, 208, 637, 144 )
 
-[node name="ground2" type="CollisionShape2D" parent="Level1/solid"]
+[node name="ground2" type="CollisionShape2D" parent="Level1/Solids"]
 position = Vector2( 1248, 224 )
 scale = Vector2( 0.470935, 0.96875 )
 shape = SubResource( 11 )
@@ -635,7 +636,7 @@ __meta__ = {
 "_editor_description_": "地面"
 }
 
-[node name="ground3" type="CollisionShape2D" parent="Level1/solid"]
+[node name="ground3" type="CollisionShape2D" parent="Level1/Solids"]
 position = Vector2( 1936, 224 )
 scale = Vector2( 0.470935, 0.96875 )
 shape = SubResource( 12 )
@@ -643,36 +644,36 @@ __meta__ = {
 "_editor_description_": "地面"
 }
 
-[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Level1/solid"]
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Level1/Solids"]
 position = Vector2( 304, 0 )
 polygon = PoolVector2Array( 1904, 144, 1904, 208, 1840, 208, 1840, 192, 1856, 192, 1856, 176, 1872, 176, 1872, 160, 1888, 160, 1888, 144 )
 
-[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Level1/solid"]
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Level1/Solids"]
 position = Vector2( 400, -1 )
 polygon = PoolVector2Array( 1840, 145, 1856, 145, 1856, 161, 1872, 161, 1872, 177, 1888, 177, 1888, 193, 1904, 193, 1904, 209, 1840, 209 )
 
-[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Level1/solid"]
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Level1/Solids"]
 position = Vector2( 528, 0 )
 polygon = PoolVector2Array( 1920, 144, 1920, 208, 1840, 208, 1840, 192, 1856, 192, 1856, 176, 1872, 176, 1872, 160, 1888, 160, 1888, 144 )
 
-[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Level1/solid"]
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Level1/Solids"]
 position = Vector2( 640, -1 )
 polygon = PoolVector2Array( 1840, 145, 1856, 145, 1856, 161, 1872, 161, 1872, 177, 1888, 177, 1888, 193, 1904, 193, 1904, 209, 1840, 209 )
 
-[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Level1/solid"]
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Level1/Solids"]
 position = Vector2( 2160, 0 )
 polygon = PoolVector2Array( 451, 176, 451, 208, 477, 208, 477, 176 )
 
-[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Level1/solid"]
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Level1/Solids"]
 position = Vector2( 2416, 0 )
 polygon = PoolVector2Array( 451, 176, 451, 208, 477, 208, 477, 176 )
 
-[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="Level1/solid"]
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="Level1/Solids"]
 position = Vector2( 743.353, -39.8313 )
 scale = Vector2( 1.18359, 1.09204 )
 polygon = PoolVector2Array( 1818.74, 226.943, 1940.4, 226.943, 1940.4, 109.731, 1913.37, 109.731, 1913.37, 124.383, 1899.85, 124.383, 1899.85, 139.034, 1886.33, 139.034, 1886.33, 153.686, 1872.81, 153.686, 1872.81, 168.337, 1859.29, 168.337, 1859.29, 182.989, 1845.77, 182.989, 1845.77, 197.64, 1832.26, 197.64, 1832.26, 212.292, 1818.74, 212.292 )
 
-[node name="ground4" type="CollisionShape2D" parent="Level1/solid"]
+[node name="ground4" type="CollisionShape2D" parent="Level1/Solids"]
 position = Vector2( 3088, 224 )
 scale = Vector2( 0.470935, 0.96875 )
 shape = SubResource( 13 )
@@ -680,7 +681,7 @@ __meta__ = {
 "_editor_description_": "地面"
 }
 
-[node name="rock" type="CollisionShape2D" parent="Level1/solid"]
+[node name="rock" type="CollisionShape2D" parent="Level1/Solids"]
 position = Vector2( 3176.13, 199.841 )
 scale = Vector2( 0.22178, 0.938477 )
 shape = SubResource( 14 )
@@ -688,7 +689,7 @@ __meta__ = {
 "_editor_description_": "地面"
 }
 
-[node name="flag" type="CollisionShape2D" parent="Level1/solid"]
+[node name="flag" type="CollisionShape2D" parent="Level1/Solids"]
 position = Vector2( 3176, 120 )
 scale = Vector2( 0.470935, 0.96875 )
 shape = SubResource( 15 )
@@ -703,7 +704,6 @@ position = Vector2( 317, 200 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 136, 201 )
-PHYSIC_JUMP_Y_SPEED = 200.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, 267 )
@@ -759,6 +759,10 @@ normal = ExtResource( 13 )
 position = Vector2( 208, 280 )
 scale = Vector2( 0.16, 0.16 )
 normal = ExtResource( 12 )
+
+[node name="Start" parent="." instance=ExtResource( 17 )]
+visible = false
+script = null
 
 [node name="System" parent="." instance=ExtResource( 9 )]
 
