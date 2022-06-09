@@ -1,7 +1,6 @@
 extends StaticBody2D
 
 export (bool) var can_hit = true
-export (float) var relative_y = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,4 +26,8 @@ func _on_anime_animation_finished(anime_name : String):
 func _process(delta):
 	pass
 
+func reset():
+	can_hit = true
+	set_texture()
+	
 

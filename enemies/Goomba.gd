@@ -9,10 +9,12 @@ export (float) var VELOCITY_X = 20
 export (Vector2) var velocity = Vector2(0,0)
 var direction = -1
 var dead = false
+var initial_pos;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	velocity.x = -VELOCITY_X
+	initial_pos = position
+	reset()
 	pass # Replace with function body.
 
 # 当玩家靠近才让怪动起来
@@ -21,7 +23,6 @@ func activate():
 	
 func die():
 	if not dead:
-		print("dead")
 		$CollisionPolygon2D.disabled = true
 		dead = true
 		$Sprite.animation = "dead"
@@ -37,7 +38,15 @@ func _physics_process(delta):
 				direction = -direction
 		velocity = move_and_slide(velocity, Vector2(0, -1))
 
+func reset():
+	direction = -1
+	position = initial_pos
+	visible = true
+	$CollisionPolygon2D.disabled = false
+	$Sprite.animation = "walk"
+	velocity.x = -VELOCITY_X
+	dead = false
 
 func _on_Timer_timeout():
-	queue_free()
+	visible = false
 	pass # Replace with function body.

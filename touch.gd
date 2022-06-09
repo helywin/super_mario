@@ -12,8 +12,16 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	$left.material.set_shader_param("darker", int(Input.is_action_pressed("move_left")) * 0.3)
+	$right.material.set_shader_param("darker", int(Input.is_action_pressed("move_right")) * 0.3)
+	$up.material.set_shader_param("darker", int(Input.is_action_pressed("move_up")) * 0.3)
+	$down.material.set_shader_param("darker", int(Input.is_action_pressed("move_down")) * 0.3)
+	$a.material.set_shader_param("darker", int(Input.is_action_pressed("jump")) * 0.3)
+	$x.material.set_shader_param("darker", int(Input.is_action_pressed("boost")) * 0.3)
+	$b.material.set_shader_param("darker", int(Input.is_action_pressed("fire")) * 0.3)
+#	$left.material.set_shader_param("darker", int(Input.is_action_pressed("move_left")) * 0.5)
+#	$left.material.set_shader_param("darker", int(Input.is_action_pressed("move_left")) * 0.5)
 
 
 func _on_up_pressed():

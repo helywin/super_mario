@@ -25,6 +25,7 @@ func _ready():
 	system.connect("close_ui", start, "hide")
 	system.connect("timeout_dead", player, "die")
 	system.connect("reborn", player, "reborn")
+	system.connect("reset_world", self, "on_reset_world")
 
 
 func _on_player_position_changed(pos : Vector2):
@@ -53,3 +54,5 @@ func _screen_resized():
 	# attach the viewport to the rect we calculated
 	viewport.set_attach_to_screen_rect(Rect2(diffhalf, viewport.size * scale))
 
+func on_reset_world():
+	$Level1.reset()

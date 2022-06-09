@@ -1,0 +1,11 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float darker = 0;
+
+void fragment() {
+	vec4 c = texture(TEXTURE, UV);
+	COLOR = vec4(c.rgb * (1.0 - darker), c.a);
+}"

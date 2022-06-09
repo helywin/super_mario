@@ -14,6 +14,7 @@ signal score_changed(score)
 signal life_changed(life)
 signal time_remain_changed(time)
 signal player_position_changed(pos)
+signal reset_world()
 
 onready var bgm = $Bgm
 
@@ -74,6 +75,7 @@ func _on_RebornTimer_timeout():
 	$Bgm.play()
 	emit_signal("close_ui")
 	emit_signal("reborn", PLAYER_START_POS)
+	emit_signal("reset_world")
 	pass # Replace with function body.
 
 
