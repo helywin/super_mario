@@ -4,7 +4,6 @@ onready var coin = $Coin
 onready var score = $Score
 onready var level = $World
 onready var level1 = $World2
-onready var life = $Life
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,6 +24,3 @@ func set_level(l1 : int, l2: int):
 	var tmp = String(l1) + "-" + String(l2)
 	level.text = tmp
 	level1.text = tmp
-	
-func set_life(v : int):
-	life.text = String(v)

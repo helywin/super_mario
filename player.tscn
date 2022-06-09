@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://frames/big.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://sound/smb_jump-small.wav" type="AudioStream" id=4]
 [ext_resource path="res://sound/smb_jump-super.wav" type="AudioStream" id=5]
 [ext_resource path="res://sound/smb_mariodie.wav" type="AudioStream" id=6]
+[ext_resource path="res://sound/smb_bump.wav" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "die"
@@ -61,6 +62,9 @@ stream = ExtResource( 5 )
 
 [node name="die" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+
+[node name="bump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
 
 [node name="dead_anime" type="AnimationPlayer" parent="."]
 anims/die = SubResource( 1 )

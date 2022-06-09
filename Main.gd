@@ -6,6 +6,7 @@ onready var start = $Start
 onready var timer = $Timer
 onready var player = $Player
 onready var system = $System
+onready var gameover = $GameOver
 onready var viewport = get_viewport()
 
 
@@ -21,17 +22,22 @@ func _ready():
 	system.connect("player_position_changed", self, "_on_player_position_changed")
 	system.connect("coin_changed", hud, "set_coin")
 	system.connect("coin_changed", start, "set_coin")
-	system.connect("show_ui", start, "show")
-	system.connect("close_ui", start, "hide")
+	system.connect("show_start_ui", start, "show")
+	system.connect("close_start_ui", start, "hide")
+	system.connect("show_gameover_ui", gameover, "show")
+	system.connect("coin_changed", gameover, "set_coin")
+#	system.connect("show_gameover_ui", start, "hide")
 	system.connect("timeout_dead", player, "die")
 	system.connect("reborn", player, "reborn")
 	system.connect("reset_world", self, "on_reset_world")
+	system.connect("life_changed", start, "set_life")
 
 
 func _on_player_position_changed(pos : Vector2):
 	camera.position.x = pos.x - 128
 	hud.rect_position.x = pos.x - 128
 	start.rect_position.x = pos.x - 128
+	gameover.rect_position.x = pos.x - 128
 
 
 	

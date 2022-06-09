@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://bgm/smb-overworld.mp3" type="AudioStream" id=1]
 [ext_resource path="res://system.gd" type="Script" id=2]
 [ext_resource path="res://sound/smb_1-up.wav" type="AudioStream" id=3]
+[ext_resource path="res://sound/smb_gameover.wav" type="AudioStream" id=4]
 
 [node name="System" type="Node2D"]
 script = ExtResource( 2 )
@@ -21,6 +22,9 @@ one_shot = true
 stream = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="game_over" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="timeout" from="DeadTimer" to="." method="_on_DeadTimer_timeout"]
 [connection signal="timeout" from="RebornTimer" to="." method="_on_RebornTimer_timeout"]

@@ -18,10 +18,11 @@ signal reset_world()
 
 onready var bgm = $Bgm
 
-signal show_ui()
-signal close_ui()
+signal show_start_ui()
+signal close_start_ui()
 signal timeout_dead()
 signal reborn(pos)
+signal show_gameover_ui()
 
 var time_left
 var start_time
@@ -58,14 +59,20 @@ func set_player_position(var pos : Vector2):
 	emit_signal("player_position_changed", PLAYER_POSITION)
 	
 func on_player_dead_begin():
+	PLAYER_LIFE -= 1
+	emit_signal("life_changed", PLAYER_LIFE)
 	$Timer.stop()
 	bgm.stop()
 	$DeadTimer.start()
 
 
 func _on_DeadTimer_timeout():
-	$RebornTimer.start()
-	emit_signal("show_ui")
+	if PLAYER_LIFE <=0:
+		$game_over.play()
+		emit_signal("show_gameover_ui")
+	else:
+		$RebornTimer.start()
+		emit_signal("show_start_ui")
 	pass # Replace with function body.
 
 
@@ -73,9 +80,10 @@ func _on_RebornTimer_timeout():
 	$Timer.start()
 	start_time = OS.get_system_time_secs()
 	$Bgm.play()
-	emit_signal("close_ui")
+	emit_signal("close_start_ui")
 	emit_signal("reborn", PLAYER_START_POS)
 	emit_signal("reset_world")
+	emit_signal("time_remain_changed", LEVEL_SECONDS)
 	pass # Replace with function body.
 
 

@@ -69,6 +69,7 @@ func reborn(var pos: Vector2):
 	reborned = true
 	position = pos
 	mario.position = Vector2(0,0)
+	velocity = Vector2(0,0)
 
 func _ready():
 	match CHARACTOR_TYPE:
@@ -106,6 +107,9 @@ func _physics_process(delta):
 			if collider.get_parent().get_name() == "CoinBricks":
 				if collider.hit():
 					emit_signal("add_coin", 1)
+			elif collider.get_parent().get_name() == "Bricks":
+				collider.hit()
+				$bump.play()
 		if collider.get_parent().get_name() == "Enemies":
 			var normal = get_slide_collision(i).normal
 			if abs(normal.x) > abs(normal.y):
