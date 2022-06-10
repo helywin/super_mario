@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "StaticBody2D",
+"class": "Hittable",
+"language": "GDScript",
+"path": "res://blocks/Hittable.gd"
+} ]
+_global_script_class_icons={
+"Hittable": ""
+}
+
 [application]
 
 config/name="Super Mario"

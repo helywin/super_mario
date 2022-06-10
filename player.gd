@@ -110,6 +110,9 @@ func _physics_process(delta):
 			elif collider.get_parent().get_name() == "Bricks":
 				collider.hit()
 				$bump.play()
+			elif collider.get_parent().get_name() == "MushroomBricks":
+				if collider.hit():
+					emit_signal("add_coin", 1)
 		if collider.get_parent().get_name() == "Enemies":
 			var normal = get_slide_collision(i).normal
 			if abs(normal.x) > abs(normal.y):
@@ -122,6 +125,7 @@ func _physics_process(delta):
 					return
 			else:
 				collider.die()
+				$stomp.play()
 				velocity.y = -PHYSIC_HIT_ENEMIES_Y_SPEED
 	if position.y > 240:
 		die()
