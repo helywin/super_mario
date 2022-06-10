@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://texture/blocks/coin_brick3.tres" type="Texture" id=1]
+[ext_resource path="res://texture/blocks/coin_brick2.tres" type="Texture" id=2]
+[ext_resource path="res://texture/blocks/coin_brick1.tres" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="CoinBrick" type="AnimatedSprite"]
+frames = SubResource( 1 )
+frame = 1
+playing = true

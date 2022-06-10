@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://blocks/CoinBrickAnime.tscn" type="PackedScene" id=1]
+[ext_resource path="res://texture/blocks/coin_brick4.tres" type="Texture" id=5]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends StaticBody2D
+
+export (bool) var can_hit = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set_texture()
+	pass # Replace with function body.
+
+func set_texture():
+	$Origin/CoinBrick.visible = can_hit
+	$Origin/Brick.visible = !can_hit
+
+func hit():
+	if can_hit:
+		can_hit = false
+		$hit_coin.play()
+		$anime.play(\"hit\")
+		print($anime.current_animation)
+		return true
+	return false
+
+func _on_anime_animation_finished(anime_name : String):
+	set_texture()
+	
+func _process(delta):
+	pass
+
+func reset():
+	can_hit = true
+	set_texture()
+	
+
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
+[node name="Brick" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Origin" type="Position2D" parent="."]
+
+[node name="Brick" type="Sprite" parent="Origin"]
+visible = false
+texture = ExtResource( 5 )
+
+[node name="CoinBrick" parent="Origin" instance=ExtResource( 1 )]
+frame = 2

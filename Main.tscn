@@ -470,10 +470,6 @@ tile_data = PoolIntArray( -327482, 23, 0, -261946, 24, 0, -196410, 24, 0, -13106
 position = Vector2( 264, 152 )
 scale = Vector2( 1, 0.938477 )
 
-[node name="CoinBrick2" parent="Level1/CoinBricks" instance=ExtResource( 6 )]
-position = Vector2( 344, 152 )
-scale = Vector2( 1, 0.938477 )
-
 [node name="CoinBrick3" parent="Level1/CoinBricks" instance=ExtResource( 6 )]
 position = Vector2( 376, 152 )
 scale = Vector2( 1, 0.938477 )
@@ -738,6 +734,11 @@ __meta__ = {
 [node name="Goomba" parent="Level1/Enemies" instance=ExtResource( 16 )]
 position = Vector2( 317, 200 )
 
+[node name="MushroomBrick" type="Node2D" parent="Level1"]
+
+[node name="Flag" parent="Level1" instance=ExtResource( 15 )]
+position = Vector2( 3168, 57 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 136, 201 )
 
@@ -812,9 +813,6 @@ visible = false
 script = null
 
 [node name="System" parent="." instance=ExtResource( 9 )]
-
-[node name="Flag" parent="." instance=ExtResource( 15 )]
-position = Vector2( 3168, 57 )
 
 [connection signal="pressed" from="HUD/Touch/up" to="HUD/Touch" method="_on_up_pressed"]
 [connection signal="released" from="HUD/Touch/up" to="HUD/Touch" method="_on_up_released"]
