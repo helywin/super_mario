@@ -12,9 +12,6 @@ var unhit_audio
 
 func _ready():
 	pass
-
-func connect_signals():
-	hit_animation.connect("animation_finished", self, "on_hit_animation_animation_finished")
 	
 func set_sprite():
 		hittable_sprite.visible = can_hit
@@ -23,15 +20,24 @@ func set_sprite():
 # 需要重载
 func on_hit():
 	pass
+	
+func reset():
+	can_hit = true
+	set_sprite()
 
 func hit():
 	if can_hit:
 		on_hit()
-		hit_audio.play()
-		hit_animation.play("hit")
+		if hit_audio:
+			hit_audio.play()
+		if hit_animation:
+			hit_animation.play("hit")
+		else:
+			set_sprite()
 		return true
 	else:
-		unhit_audio.play()
+		if unhit_audio:
+			unhit_audio.play()
 		return false
 		
 func on_hit_animation_animation_finished(anime_name : String):

@@ -116,10 +116,7 @@ func _physics_process(delta):
 		if collider.get_parent().get_name() == "Enemies":
 			var normal = get_slide_collision(i).normal
 			if abs(normal.x) > abs(normal.y):
-				if reborned:
-					# 防止无限死亡
-					reborned = false
-				else:
+				if not reborned:
 					print("mario die")
 					die()
 					return
@@ -202,5 +199,6 @@ func _physics_process(delta):
 		velocity.y = sign(velocity.y) * PHYSIC_MAX_Y_SPEED_NORMAL
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	emit_signal("position_changed", position)
+	reborned = false
 	pass
 

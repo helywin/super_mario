@@ -7,7 +7,7 @@ func _ready():
 	hit_animation = $animation
 	hit_audio = $hit_break
 	unhit_audio = $hit_brick
-	connect_signals()
+	hit_animation.connect("animation_finished", self, "on_hit_animation_animation_finished")
 	pass # Replace with function body.
 
 func on_hit():
