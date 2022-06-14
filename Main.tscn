@@ -740,7 +740,7 @@ __meta__ = {
 [node name="Enemies" type="Node2D" parent="Level1"]
 
 [node name="Goomba" parent="Level1/Enemies" instance=ExtResource( 16 )]
-position = Vector2( 317, 200 )
+position = Vector2( 328, 200 )
 
 [node name="Goomba2" parent="Level1/Enemies" instance=ExtResource( 16 )]
 position = Vector2( 848, 200 )

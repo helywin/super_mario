@@ -38,7 +38,7 @@ func _physics_process(delta):
 			# 怪撞上玩家
 			var collider = get_slide_collision(i).collider
 			if collider.name == "Player":
-				collider.die()
+				collider.down()
 			elif is_on_wall():
 				velocity.x = - direction * VELOCITY_X
 				direction = -direction
