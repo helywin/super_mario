@@ -28,6 +28,7 @@ tracks/0/keys = {
 }
 
 [node name="Hitable" instance=ExtResource( 1 )]
+collision_mask = 30
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]

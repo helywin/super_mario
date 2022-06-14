@@ -62,3 +62,6 @@ func _screen_resized():
 
 func on_reset_world():
 	$Level1.reset()
+
+func _process(delta):
+	pass

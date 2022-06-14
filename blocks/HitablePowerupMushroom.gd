@@ -11,4 +11,4 @@ func _ready():
 
 func on_hit():
 	can_hit = false
-	$Item.spawn()
+	$PowerupMushroom.spawn()

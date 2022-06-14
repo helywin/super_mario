@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://frames/big.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://sound/smb_mariodie.wav" type="AudioStream" id=6]
 [ext_resource path="res://sound/smb_bump.wav" type="AudioStream" id=7]
 [ext_resource path="res://sound/smb_stomp.wav" type="AudioStream" id=8]
+[ext_resource path="res://sound/smb_pipe.wav" type="AudioStream" id=9]
+[ext_resource path="res://sound/smb_powerup.wav" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "die"
@@ -26,9 +28,10 @@ tracks/0/keys = {
 }
 
 [node name="player" type="KinematicBody2D"]
+pause_mode = 2
 position = Vector2( 0, -8 )
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 13
 script = ExtResource( 2 )
 
 [node name="mario_small" type="AnimatedSprite" parent="."]
@@ -46,7 +49,7 @@ polygon = PoolVector2Array( -6.99998, -6.00003, 7.00002, -5.99997, 6.99998, 6.00
 visible = false
 frames = ExtResource( 1 )
 animation = "stand"
-speed_scale = 2.5
+speed_scale = 2.0
 playing = true
 
 [node name="collision_big" type="CollisionPolygon2D" parent="."]
@@ -54,6 +57,7 @@ visible = false
 rotation = 1.5708
 scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( -15, -7.00005, 15, -6.99995, 15, 7.00005, -15, 6.99995, -16, -5.79198e-05 )
+disabled = true
 
 [node name="small_jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
@@ -72,3 +76,16 @@ anims/die = SubResource( 1 )
 
 [node name="stomp" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
+
+[node name="up" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+
+[node name="down" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+
+[node name="invincible_timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="finished" from="up" to="." method="_on_up_finished"]
+[connection signal="finished" from="down" to="." method="_on_down_finished"]
+[connection signal="timeout" from="invincible_timer" to="." method="_on_invincible_timer_timeout"]

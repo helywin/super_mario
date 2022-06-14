@@ -7,6 +7,7 @@ export (Vector2) var INIT_VELOCITY = Vector2(150, 0)
 var velocity = Vector2(0,0)
 var activated = false
 var direction = 1
+var collision
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +18,14 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func hit():
+	activated = false
+	visible = false
+	collision.disabled = true
+	
+func on_collide_player(player):
+	pass
+
 func _physics_process(delta):
 	if not activated:
 		return
@@ -25,6 +34,12 @@ func _physics_process(delta):
 	if is_on_wall():
 		velocity.x = -velocity.x
 	velocity.y += ACC_Y
+	for i in get_slide_count():
+		# 物体撞上玩家
+		var collider = get_slide_collision(i).collider
+		if collider.name == "Player":
+			on_collide_player(collider)
+			hit()
 #	print("move and slide")
 	move_and_slide(velocity, Vector2(0,-1))
 

@@ -36,8 +36,9 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	$Timer.paused = Global.pause_system_timer
+	bgm.stream_paused = Global.pause_bgm
 
 func add_coin(var coin : int):
 	PLAYER_COIN += coin

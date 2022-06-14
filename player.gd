@@ -53,6 +53,9 @@ export (Vector2) var velocity = Vector2(0,0)
 
 var dead = false
 var reborned = false
+# 无敌闪烁次数
+var invincible_count = 0
+var direction = 1
 
 func die():
 	collison.disabled = true
@@ -70,6 +73,50 @@ func reborn(var pos: Vector2):
 	position = pos
 	mario.position = Vector2(0,0)
 	velocity = Vector2(0,0)
+	
+func up():
+	if CHARACTOR_TYPE == 0:
+		CHARACTOR_TYPE = 1
+		mario = $mario_big
+		collison = $collision_big
+		jump_sound = $big_jump
+		$mario_small.visible = false
+		$mario_big.visible = true
+		$collision_big.disabled = false
+		$collision_big.visible = true
+		$collision_small.disabled = true
+		$collision_small.visible = false
+		mario.play("turn")
+		position += Vector2(0, -8)
+		Global.pause_enemies = true
+#		Global.pause_bgm = true
+		Global.pause_player = true
+		$up.play()
+		
+func down():
+	match CHARACTOR_TYPE:
+		0: die()
+		1:
+			CHARACTOR_TYPE = 0
+			mario = $mario_small
+			collison = $collision_small
+			jump_sound = $small_jump
+			$mario_small.visible = true
+			$mario_big.visible = false
+			$collision_big.disabled = true
+			$collision_big.visible = false
+			$collision_small.disabled = false
+			$collision_small.visible = true
+			mario.play("turn")
+			Global.pause_enemies = true
+	#		Global.pause_bgm = true
+			Global.pause_player = true
+			$down.play()
+			# 不能够和敌人发生碰撞
+			set_collision_mask_bit(2, false)
+			set_collision_layer_bit(1, false)
+			set_collision_layer_bit(4, true)
+			reborned = true
 
 func _ready():
 	match CHARACTOR_TYPE:
@@ -91,10 +138,12 @@ var flopping = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$mario_small.scale.x = direction
+	$mario_big.scale.x = direction
 	pass
 
 func _physics_process(delta):
-	if dead:
+	if dead or Global.pause_player:
 		return
 	
 	var left = Input.is_action_pressed("move_left")
@@ -103,6 +152,7 @@ func _physics_process(delta):
 	
 	for i in get_slide_count():
 		var collider = get_slide_collision(i).collider;
+#		print(collider.get_name())
 		if is_on_ceiling():
 			if collider.get_parent().get_name() == "CoinBricks":
 				if collider.hit():
@@ -113,12 +163,14 @@ func _physics_process(delta):
 			elif collider.get_parent().get_name() == "MushroomBricks":
 				if collider.hit():
 					emit_signal("add_coin", 1)
-		if collider.get_parent().get_name() == "Enemies":
+		if collider.get_name() == "PowerupMushroom":
+					print("powerup")
+					collider.hit()
+					up()
+		if not reborned and collider.get_parent().get_name() == "Enemies":
 			var normal = get_slide_collision(i).normal
 			if abs(normal.x) > abs(normal.y):
-				if not reborned:
-					print("mario die")
-					die()
+					down()
 					return
 			else:
 				collider.die()
@@ -139,8 +191,8 @@ func _physics_process(delta):
 		jump_hold = true
 	if left:
 		if is_on_floor():
-			if mario.scale.x != -1:
-				mario.scale.x = -1
+			if direction != -1:
+				direction = -1
 			else:
 				velocity.x -= PHYSIC_ACC_NORMAL
 		else:
@@ -149,8 +201,8 @@ func _physics_process(delta):
 
 	if right:
 		if is_on_floor():
-			if mario.scale.x != 1:
-				mario.scale.x = 1
+			if direction != 1:
+				direction = 1
 			else:
 				velocity.x += PHYSIC_ACC_NORMAL
 		else:
@@ -171,28 +223,29 @@ func _physics_process(delta):
 	else:
 		velocity.y += PHYSIC_GRAVITY
 	
-	if jumping and not velocity.y < 0 and is_on_floor():
-		mario.animation = "stand"
-		jumping = false
+	if not Global.pause_player:
+		if jumping and not velocity.y < 0 and is_on_floor():
+			mario.animation = "walk"
+			jumping = false
 
-	# 更新动作动画
-	if is_on_floor() and (left or right):
-		mario.animation = "walk"
-	if mario.animation == "walk":
-		# 走路速度越快，动作越快，但是不能太慢
-		mario.speed_scale = abs(velocity.x * 2.5 / PHYSIC_MAX_X_SPEED_NORMAL)
-		if mario.speed_scale < 1:
-			mario.speed_scale = 1
-	if not is_on_floor() and not jumping:
+		# 更新动作动画
+		if is_on_floor() and (left or right):
+			mario.animation = "walk"
 		if mario.animation == "walk":
-			mario.speed_scale = 0
-	if not is_on_floor() and jumping:
-		mario.animation = "jump"
-	if is_on_floor():
-		if right and velocity.x < 0 or left and velocity.x > 0:
-			mario.animation = "stop"
-	if is_on_floor() and abs(velocity.x) < PHYSIC_ACC_NORMAL:
-		mario.animation = "stand"
+			# 走路速度越快，动作越快，但是不能太慢
+			mario.speed_scale = abs(velocity.x * 2.5 / PHYSIC_MAX_X_SPEED_NORMAL)
+			if mario.speed_scale < 1:
+				mario.speed_scale = 1
+		if not is_on_floor() and not jumping:
+			if mario.animation == "walk":
+				mario.speed_scale = 0
+		if not is_on_floor() and jumping:
+			mario.animation = "jump"
+		if is_on_floor():
+			if right and velocity.x < 0 or left and velocity.x > 0:
+				mario.animation = "stop"
+		if is_on_floor() and abs(velocity.x) < PHYSIC_ACC_NORMAL:
+			mario.animation = "stand"
 	if abs(velocity.x) > PHYSIC_MAX_X_SPEED_NORMAL:
 		velocity.x = sign(velocity.x) * PHYSIC_MAX_X_SPEED_NORMAL
 	if abs(velocity.y) > PHYSIC_MAX_Y_SPEED_NORMAL:
@@ -201,4 +254,32 @@ func _physics_process(delta):
 	emit_signal("position_changed", position)
 	reborned = false
 	pass
+	
 
+
+func _on_up_finished():
+	print("up finished")
+	Global.pause_enemies = false
+	Global.pause_player = false
+
+
+func _on_down_finished():
+	print("up finished")
+	Global.pause_enemies = false
+	Global.pause_player = false
+	if CHARACTOR_TYPE == 0:
+		position += Vector2(0, 8)
+	invincible_count = 0
+	$invincible_timer.start()
+
+func _on_invincible_timer_timeout():
+	visible = !visible
+	invincible_count +=1
+	if invincible_count > 10:
+		visible = true
+		$invincible_timer.stop()
+		# 能够和敌人发生碰撞
+		set_collision_mask_bit(2, true)
+		set_collision_layer_bit(1, true)
+		set_collision_layer_bit(4, false)
+	pass # Replace with function body.

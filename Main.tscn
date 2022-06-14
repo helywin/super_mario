@@ -434,7 +434,7 @@ shader_param/darker = 0.0
 shader = ExtResource( 20 )
 shader_param/darker = 0.0
 
-[node name="Main" type="Node2D"]
+[node name="root" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="background" type="Node2D" parent="."]
@@ -469,132 +469,174 @@ tile_data = PoolIntArray( -327482, 23, 0, -261946, 24, 0, -196410, 24, 0, -13106
 
 [node name="HitableCoin" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 264, 152 )
+collision_mask = 1
 
 [node name="HitableCoin2" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 376, 152 )
+collision_mask = 1
 
 [node name="HitableCoin3" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 352, 88 )
+collision_mask = 1
 
 [node name="HitableCoin4" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 1256, 152 )
+collision_mask = 1
 
 [node name="HitableCoin5" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 1512, 88 )
+collision_mask = 1
 
 [node name="HitableCoin6" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 1768, 88 )
+collision_mask = 1
 
 [node name="HitableCoin7" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 1720, 152 )
+collision_mask = 1
 
 [node name="HitableCoin8" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 1816, 152 )
+collision_mask = 1
 
 [node name="HitableCoin9" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 1768, 152 )
+collision_mask = 1
 
 [node name="HitableCoin10" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 2088, 88 )
+collision_mask = 1
 
 [node name="HitableCoin11" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 2072, 88 )
+collision_mask = 1
 
 [node name="HitableCoin12" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 2728, 152 )
+collision_mask = 1
 
 [node name="Bricks" type="Node2D" parent="Level1"]
 
 [node name="HitableBrick" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 328, 152 )
+collision_mask = 1
 
 [node name="HitableBrick2" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 360, 152 )
+collision_mask = 1
 
 [node name="HitableBrick3" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1240, 152 )
+collision_mask = 1
 
 [node name="HitableBrick4" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1272, 152 )
+collision_mask = 1
 
 [node name="HitableBrick5" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1288, 88 )
+collision_mask = 1
 
 [node name="HitableBrick11" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1304, 88 )
+collision_mask = 1
 
 [node name="HitableBrick7" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1320, 88 )
+collision_mask = 1
 
 [node name="HitableBrick8" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1336, 88 )
+collision_mask = 1
 
 [node name="HitableBrick9" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1352, 88 )
+collision_mask = 1
 
 [node name="HitableBrick10" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1368, 88 )
+collision_mask = 1
 
 [node name="HitableBrick6" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1384, 88 )
+collision_mask = 1
 
 [node name="HitableBrick12" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1464, 88 )
+collision_mask = 1
 
 [node name="HitableBrick13" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1480, 88 )
+collision_mask = 1
 
 [node name="HitableBrick14" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1496, 88 )
+collision_mask = 1
 
 [node name="HitableBrick15" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1512, 152 )
+collision_mask = 1
 
 [node name="HitableBrick16" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1624, 152 )
+collision_mask = 1
 
 [node name="HitableBrick18" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1928, 152 )
+collision_mask = 1
 
 [node name="HitableBrick19" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1960, 88 )
+collision_mask = 1
 
 [node name="HitableBrick20" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1992, 88 )
+collision_mask = 1
 
 [node name="HitableBrick24" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 2072, 152 )
+collision_mask = 1
 
 [node name="HitableBrick25" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 2088, 152 )
+collision_mask = 1
 
 [node name="HitableBrick26" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 2696, 152 )
+collision_mask = 1
 
 [node name="HitableBrick27" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 2744, 152 )
+collision_mask = 1
 
 [node name="HitableBrick28" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 2712, 152 )
+collision_mask = 1
 
 [node name="HitableBrick22" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 2104, 88 )
+collision_mask = 1
 
 [node name="HitableBrick23" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 2056, 88 )
+collision_mask = 1
 
 [node name="HitableBrick21" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1976, 88 )
+collision_mask = 1
 
 [node name="HitableBrick17" parent="Level1/Bricks" instance=ExtResource( 6 )]
 position = Vector2( 1608, 152 )
+collision_mask = 1
 
 [node name="MushroomBricks" type="Node2D" parent="Level1"]
 
 [node name="Hitable" parent="Level1/MushroomBricks" instance=ExtResource( 7 )]
 position = Vector2( 344, 152 )
+collision_mask = 1
 
 [node name="Solids" type="StaticBody2D" parent="Level1"]
+collision_mask = 30
 
 [node name="ground" type="CollisionShape2D" parent="Level1/Solids"]
 position = Vector2( 552, 224 )
@@ -699,6 +741,12 @@ __meta__ = {
 
 [node name="Goomba" parent="Level1/Enemies" instance=ExtResource( 16 )]
 position = Vector2( 317, 200 )
+
+[node name="Goomba2" parent="Level1/Enemies" instance=ExtResource( 16 )]
+position = Vector2( 848, 200 )
+
+[node name="Goomba3" parent="Level1/Enemies" instance=ExtResource( 16 )]
+position = Vector2( 824, 200 )
 
 [node name="Flag" parent="Level1" instance=ExtResource( 15 )]
 position = Vector2( 3168, 57 )

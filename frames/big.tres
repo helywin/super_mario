@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=2]
+[gd_resource type="SpriteFrames" load_steps=12 format=2]
 
 [ext_resource path="res://texture/charactor/big/walk2.tres" type="Texture" id=1]
 [ext_resource path="res://texture/charactor/big/walk1.tres" type="Texture" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://texture/charactor/big/stop.tres" type="Texture" id=5]
 [ext_resource path="res://texture/charactor/big/walk3.tres" type="Texture" id=6]
 [ext_resource path="res://texture/charactor/big/die.tres" type="Texture" id=7]
+[ext_resource path="res://texture/charactor/animation/empty.tres" type="Texture" id=8]
+[ext_resource path="res://texture/charactor/animation/stand.tres" type="Texture" id=9]
+[ext_resource path="res://texture/charactor/animation/stand1.tres" type="Texture" id=10]
+[ext_resource path="res://texture/charactor/animation/stand2.tres" type="Texture" id=11]
 
 [resource]
 animations = [ {
@@ -20,9 +24,9 @@ animations = [ {
 "name": "die",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "stand",
+"frames": [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 1 ), ExtResource( 2 ) ],
@@ -30,8 +34,18 @@ animations = [ {
 "name": "walk",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "stand",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "turn",
 "speed": 5.0
 } ]

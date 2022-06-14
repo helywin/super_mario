@@ -31,6 +31,8 @@ func die():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if Global.pause_enemies:
+		return
 	if not dead:
 		for i in get_slide_count():
 			# 怪撞上玩家
