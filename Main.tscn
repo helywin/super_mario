@@ -479,10 +479,6 @@ collision_mask = 1
 position = Vector2( 352, 88 )
 collision_mask = 1
 
-[node name="HitableCoin4" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
-position = Vector2( 1256, 152 )
-collision_mask = 1
-
 [node name="HitableCoin5" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 1512, 88 )
 collision_mask = 1
@@ -636,7 +632,7 @@ position = Vector2( 1768, 88 )
 collision_mask = 1
 
 [node name="Hitable3" parent="Level1/MushroomBricks" instance=ExtResource( 7 )]
-position = Vector2( 1768, 88 )
+position = Vector2( 1256, 152 )
 collision_mask = 1
 
 [node name="Solids" type="StaticBody2D" parent="Level1"]
@@ -752,6 +748,21 @@ position = Vector2( 848, 200 )
 [node name="Goomba3" parent="Level1/Enemies" instance=ExtResource( 16 )]
 position = Vector2( 824, 200 )
 
+[node name="Goomba4" parent="Level1/Enemies" instance=ExtResource( 16 )]
+position = Vector2( 1288, 72 )
+
+[node name="Goomba5" parent="Level1/Enemies" instance=ExtResource( 16 )]
+position = Vector2( 1808, 200 )
+
+[node name="Goomba6" parent="Level1/Enemies" instance=ExtResource( 16 )]
+position = Vector2( 1728, 200 )
+
+[node name="Goomba7" parent="Level1/Enemies" instance=ExtResource( 16 )]
+position = Vector2( 2720, 200 )
+
+[node name="Goomba8" parent="Level1/Enemies" instance=ExtResource( 16 )]
+position = Vector2( 2776, 200 )
+
 [node name="Flag" parent="Level1" instance=ExtResource( 15 )]
 position = Vector2( 3168, 57 )
 
@@ -766,6 +777,12 @@ current = true
 [node name="Timer" type="Timer" parent="."]
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
+
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+margin_top = 240.0
+margin_right = 256.0
+margin_bottom = 360.0
+color = Color( 0, 0, 0, 1 )
 
 [node name="Touch" type="Node2D" parent="HUD"]
 script = ExtResource( 14 )

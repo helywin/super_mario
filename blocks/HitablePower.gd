@@ -18,4 +18,5 @@ func on_hit(player_type: int):
 		item = load("res://items/PowerFlower.tscn")
 	var instance = item.instance()
 	$Item.add_child(instance)
+	instance.name = "Power"
 	instance.spawn()

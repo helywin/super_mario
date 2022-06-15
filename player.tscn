@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://frames/big.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
 [ext_resource path="res://frames/small.tres" type="SpriteFrames" id=3]
 [ext_resource path="res://sound/smb_jump-small.wav" type="AudioStream" id=4]
@@ -14,18 +13,6 @@
 [sub_resource type="Animation" id=1]
 resource_name = "die"
 length = 2.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("mario_small:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 2, 2.001 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, -24 ), Vector2( 0, -28 ), Vector2( 0, -30 ), Vector2( 0, -28 ), Vector2( 0, -16 ), Vector2( 0, 0 ), Vector2( 0, 64 ), Vector2( 0, 128 ), Vector2( 0, 1000 ), Vector2( 0, 0 ) ]
-}
 
 [node name="player" type="KinematicBody2D"]
 pause_mode = 2
@@ -34,9 +21,9 @@ collision_layer = 2
 collision_mask = 13
 script = ExtResource( 2 )
 
-[node name="mario_small" type="AnimatedSprite" parent="."]
+[node name="mario" type="AnimatedSprite" parent="."]
 frames = ExtResource( 3 )
-animation = "stand"
+animation = "stand_0"
 speed_scale = 2.5
 playing = true
 
@@ -44,13 +31,6 @@ playing = true
 rotation = 1.5708
 scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( -6.99998, -6.00003, 7.00002, -5.99997, 6.99998, 6.00003, -7.00002, 5.99997, -8, -2.89599e-05 )
-
-[node name="mario_big" type="AnimatedSprite" parent="."]
-visible = false
-frames = ExtResource( 1 )
-animation = "stand"
-speed_scale = 2.0
-playing = true
 
 [node name="collision_big" type="CollisionPolygon2D" parent="."]
 visible = false

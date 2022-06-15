@@ -8,6 +8,8 @@
 extents = Vector2( 8, 8 )
 
 [node name="Item" instance=ExtResource( 1 )]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]

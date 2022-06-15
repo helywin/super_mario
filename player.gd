@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var mario
+onready var mario = $mario
 var collison
 var jump_sound
 
@@ -75,39 +75,40 @@ func reborn(var pos: Vector2):
 	velocity = Vector2(0,0)
 	
 func up():
-	if CHARACTOR_TYPE == 0:
-		CHARACTOR_TYPE = 1
-		mario = $mario_big
-		collison = $collision_big
-		jump_sound = $big_jump
-		$mario_small.visible = false
-		$mario_big.visible = true
-		$collision_big.disabled = false
-		$collision_big.visible = true
-		$collision_small.disabled = true
-		$collision_small.visible = false
-		mario.play("turn")
-		position += Vector2(0, -8)
-		Global.pause_enemies = true
-#		Global.pause_bgm = true
-		Global.pause_player = true
-		$up.play()
-		
+	match CHARACTOR_TYPE:
+		0:
+			CHARACTOR_TYPE = 1
+			collison = $collision_big
+			jump_sound = $big_jump
+			$collision_big.disabled = false
+			$collision_big.visible = true
+			$collision_small.disabled = true
+			$collision_small.visible = false
+			mario.play("0_to_1")
+			position += Vector2(0, -8)
+			Global.pause_enemies = true
+			Global.pause_player = true
+			$up.play()
+		1:
+			CHARACTOR_TYPE = 2
+			mario.play("1_to_2")
+			Global.pause_enemies = true
+			Global.pause_player = true
+			$up.play()
+		2:	
+			$up.play()
 func down():
 	match CHARACTOR_TYPE:
 		0: die()
 		1:
 			CHARACTOR_TYPE = 0
-			mario = $mario_small
 			collison = $collision_small
 			jump_sound = $small_jump
-			$mario_small.visible = true
-			$mario_big.visible = false
 			$collision_big.disabled = true
 			$collision_big.visible = false
 			$collision_small.disabled = false
 			$collision_small.visible = true
-			mario.play("turn")
+			mario.play("1_to_0")
 			Global.pause_enemies = true
 	#		Global.pause_bgm = true
 			Global.pause_player = true
@@ -117,29 +118,42 @@ func down():
 			set_collision_layer_bit(1, false)
 			set_collision_layer_bit(4, true)
 			reborned = true
+		2:
+			CHARACTOR_TYPE = 0
+			collison = $collision_small
+			jump_sound = $small_jump
+			$collision_big.disabled = true
+			$collision_big.visible = false
+			$collision_small.disabled = false
+			$collision_small.visible = true
+			mario.play("2_to_0")
+			Global.pause_enemies = true
+	#		Global.pause_bgm = true
+			Global.pause_player = true
+			$down.play()
+			# 不能够和敌人发生碰撞
+			set_collision_mask_bit(2, false)
+			set_collision_layer_bit(1, false)
+			set_collision_layer_bit(4, true)
+			reborned = true
+			
 
 func _ready():
 	match CHARACTOR_TYPE:
 		0: 
-			mario = $mario_small
 			collison = $collision_small
 			jump_sound = $small_jump
-			$mario_big.visible = false
 			$collision_big.disabled = true
-		1:
-			mario = $mario_big
+		1,2:
 			collison = $collision_big
 			jump_sound = $big_jump
-			$mario_small.visible = false
 			$collision_small.disabled = true
-	pass # Replace with function body.
 
 var flopping = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$mario_small.scale.x = direction
-	$mario_big.scale.x = direction
+	mario.scale.x = direction
 	pass
 
 func _physics_process(delta):
@@ -163,9 +177,10 @@ func _physics_process(delta):
 			elif collider.get_parent().get_name() == "MushroomBricks":
 				if collider.hit(CHARACTOR_TYPE):
 					emit_signal("add_coin", 1)
-		if collider.get_name() == "PowerupMushroom":
+#		print(collider.get_name())
+		if collider.get_name() == "Power":
 					print("powerup")
-					collider.hit(CHARACTOR_TYPE)
+					collider.hit()
 					up()
 		if not reborned and collider.get_parent().get_name() == "Enemies":
 			var normal = get_slide_collision(i).normal
@@ -225,27 +240,27 @@ func _physics_process(delta):
 	
 	if not Global.pause_player:
 		if jumping and not velocity.y < 0 and is_on_floor():
-			mario.animation = "walk"
+			mario.animation = "walk_" + String(CHARACTOR_TYPE)
 			jumping = false
 
 		# 更新动作动画
 		if is_on_floor() and (left or right):
-			mario.animation = "walk"
-		if mario.animation == "walk":
+			mario.animation = "walk_" + String(CHARACTOR_TYPE)
+		if mario.animation == "walk_" + String(CHARACTOR_TYPE):
 			# 走路速度越快，动作越快，但是不能太慢
 			mario.speed_scale = abs(velocity.x * 2.5 / PHYSIC_MAX_X_SPEED_NORMAL)
 			if mario.speed_scale < 1:
 				mario.speed_scale = 1
 		if not is_on_floor() and not jumping:
-			if mario.animation == "walk":
+			if mario.animation == "walk_" + String(CHARACTOR_TYPE):
 				mario.speed_scale = 0
 		if not is_on_floor() and jumping:
-			mario.animation = "jump"
+			mario.animation = "jump_" + String(CHARACTOR_TYPE)
 		if is_on_floor():
 			if right and velocity.x < 0 or left and velocity.x > 0:
-				mario.animation = "stop"
+				mario.animation = "stop_" + String(CHARACTOR_TYPE)
 		if is_on_floor() and abs(velocity.x) < PHYSIC_ACC_NORMAL:
-			mario.animation = "stand"
+			mario.animation = "stand_" + String(CHARACTOR_TYPE)
 	if abs(velocity.x) > PHYSIC_MAX_X_SPEED_NORMAL:
 		velocity.x = sign(velocity.x) * PHYSIC_MAX_X_SPEED_NORMAL
 	if abs(velocity.y) > PHYSIC_MAX_Y_SPEED_NORMAL:

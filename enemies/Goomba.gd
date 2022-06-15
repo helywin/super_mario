@@ -7,6 +7,7 @@ extends KinematicBody2D
 
 export (float) var VELOCITY_X = 20
 export (Vector2) var velocity = Vector2(0,0)
+export (int) var ACC_Y = 14
 var direction = -1
 var dead = false
 var initial_pos;
@@ -40,6 +41,7 @@ func _physics_process(delta):
 			elif is_on_wall():
 				velocity.x = - direction * VELOCITY_X
 				direction = -direction
+		velocity.y += ACC_Y
 		velocity = move_and_slide(velocity, Vector2(0, -1))
 
 func reset():
