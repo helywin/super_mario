@@ -6,7 +6,7 @@
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://blocks/HitableBrick.tscn" type="PackedScene" id=6]
-[ext_resource path="res://blocks/HitablePowerupMushroom.tscn" type="PackedScene" id=7]
+[ext_resource path="res://blocks/HitablePower.tscn" type="PackedScene" id=7]
 [ext_resource path="res://icon/arrow.png" type="Texture" id=8]
 [ext_resource path="res://system.tscn" type="PackedScene" id=9]
 [ext_resource path="res://icon/x.png" type="Texture" id=10]
@@ -487,10 +487,6 @@ collision_mask = 1
 position = Vector2( 1512, 88 )
 collision_mask = 1
 
-[node name="HitableCoin6" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
-position = Vector2( 1768, 88 )
-collision_mask = 1
-
 [node name="HitableCoin7" parent="Level1/CoinBricks" instance=ExtResource( 21 )]
 position = Vector2( 1720, 152 )
 collision_mask = 1
@@ -633,6 +629,14 @@ collision_mask = 1
 
 [node name="Hitable" parent="Level1/MushroomBricks" instance=ExtResource( 7 )]
 position = Vector2( 344, 152 )
+collision_mask = 1
+
+[node name="Hitable2" parent="Level1/MushroomBricks" instance=ExtResource( 7 )]
+position = Vector2( 1768, 88 )
+collision_mask = 1
+
+[node name="Hitable3" parent="Level1/MushroomBricks" instance=ExtResource( 7 )]
+position = Vector2( 1768, 88 )
 collision_mask = 1
 
 [node name="Solids" type="StaticBody2D" parent="Level1"]

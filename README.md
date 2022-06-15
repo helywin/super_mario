@@ -31,3 +31,6 @@ https://themushroomkingdom.net/
 
 
 跳跃：
+
+对话框边缘：
+res: StyleBox

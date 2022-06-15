@@ -14,7 +14,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
+func on_player_position_changed(pos : Vector2):
+	for enemy in $Enemies.get_children():
+		if enemy.position.x - pos.x < 128:
+			enemy.activated = true
+	pass
+	
 func reset():
 	for child in $CoinBricks.get_children():
 		child.reset()

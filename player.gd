@@ -155,17 +155,17 @@ func _physics_process(delta):
 #		print(collider.get_name())
 		if is_on_ceiling():
 			if collider.get_parent().get_name() == "CoinBricks":
-				if collider.hit():
+				if collider.hit(CHARACTOR_TYPE):
 					emit_signal("add_coin", 1)
 			elif collider.get_parent().get_name() == "Bricks":
-				collider.hit()
+				collider.hit(CHARACTOR_TYPE)
 				$bump.play()
 			elif collider.get_parent().get_name() == "MushroomBricks":
-				if collider.hit():
+				if collider.hit(CHARACTOR_TYPE):
 					emit_signal("add_coin", 1)
 		if collider.get_name() == "PowerupMushroom":
 					print("powerup")
-					collider.hit()
+					collider.hit(CHARACTOR_TYPE)
 					up()
 		if not reborned and collider.get_parent().get_name() == "Enemies":
 			var normal = get_slide_collision(i).normal

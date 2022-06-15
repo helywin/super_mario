@@ -15,6 +15,7 @@ func _ready():
 #	if OS.get_name() == "HTML5":
 	timer.start(1)
 	player.connect("position_changed", system, "set_player_position")
+	player.connect("position_changed", $Level1, "on_player_position_changed")
 	player.connect("add_coin", system, "add_coin")
 	player.connect("dead_begin", system, "on_player_dead_begin")
 	timer.connect("timeout", self, "_on_Timer_timeout")

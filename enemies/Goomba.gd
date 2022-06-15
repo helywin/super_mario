@@ -10,16 +10,14 @@ export (Vector2) var velocity = Vector2(0,0)
 var direction = -1
 var dead = false
 var initial_pos;
+# 玩家靠近才能开始动
+var activated = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	initial_pos = position
 	reset()
 	pass # Replace with function body.
-
-# 当玩家靠近才让怪动起来
-func activate():
-	pass
 	
 func die():
 	if not dead:
@@ -31,7 +29,7 @@ func die():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if Global.pause_enemies:
+	if not activated or Global.pause_enemies:
 		return
 	if not dead:
 		for i in get_slide_count():

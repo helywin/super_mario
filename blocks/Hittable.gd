@@ -18,16 +18,16 @@ func set_sprite():
 		unhittable_sprite.visible = !can_hit
 
 # 需要重载
-func on_hit():
+func on_hit(player_type: int):
 	pass
 	
 func reset():
 	can_hit = true
 	set_sprite()
 
-func hit():
+func hit(player_type: int):
 	if can_hit:
-		on_hit()
+		on_hit(player_type)
 		if hit_audio:
 			hit_audio.play()
 		if hit_animation:

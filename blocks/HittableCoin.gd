@@ -10,5 +10,5 @@ func _ready():
 	hit_animation.connect("animation_finished", self, "on_hit_animation_animation_finished")
 	pass # Replace with function body.
 
-func on_hit():
+func on_hit(player_type: int):
 	can_hit = false
