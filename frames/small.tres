@@ -35,59 +35,9 @@ animations = [ {
 "name": "die",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
-"name": "stand_1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "jump_1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ) ],
-"loop": true,
-"name": "stop_1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "walk_1",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "stand_0",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "walk_0",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "stop_0",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "jump_0",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
-"loop": true,
-"name": "1_to_2",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 24 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "walk_2",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ) ],
-"loop": true,
-"name": "stop_2",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ) ],
@@ -95,14 +45,29 @@ animations = [ {
 "name": "stand_2",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ) ],
+"frames": [ ExtResource( 18 ) ],
 "loop": true,
-"name": "jump_2",
+"name": "stop_2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "stop_1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "jump_0",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "2_to_0",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "walk_1",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 8 ) ],
@@ -114,4 +79,39 @@ animations = [ {
 "loop": true,
 "name": "0_to_1",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "stop_0",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 24 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "walk_2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "jump_1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk_0",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "jump_2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "1_to_2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "stand_1",
+"speed": 5.0
 } ]

@@ -50,6 +50,7 @@ func add_coin(var coin : int):
 	emit_signal("coin_changed", PLAYER_COIN)
 
 func add_life(var life : int):
+	$add_life.play()
 	PLAYER_LIFE += life
 	emit_signal("life_changed", PLAYER_LIFE)
 

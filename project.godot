@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Hittable",
 "language": "GDScript",
 "path": "res://blocks/Hittable.gd"
+}, {
+"base": "StaticBody2D",
+"class": "HittableObject",
+"language": "GDScript",
+"path": "res://blocks/HittableObject.gd"
 } ]
 _global_script_class_icons={
-"Hittable": ""
+"Hittable": "",
+"HittableObject": ""
 }
 
 [application]
@@ -27,6 +33,11 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Global.gd"
+Player="*res://player.tscn"
+Hud="*res://hud.tscn"
+StartUi="*res://start_ui.tscn"
+GameOver="*res://game_over.tscn"
+System="*res://system.tscn"
 
 [display]
 

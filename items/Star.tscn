@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://items/Item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://frames/star.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://items/Star.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="Item" instance=ExtResource( 1 )]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource( 3 )
+
+[node name="Sprite" type="AnimatedSprite" parent="." index="0"]
+frames = ExtResource( 2 )
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )

@@ -1,25 +1,25 @@
 extends Node2D
 
-onready var camera = $Camera2D
+onready var camera = $Camera
 onready var hud = $HUD
 onready var start = $Start
 onready var timer = $Timer
-onready var player = $Player
-onready var system = $System
+onready var player = Player
+onready var system = System
 onready var gameover = $GameOver
 onready var viewport = get_viewport()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player.z_index = 1
+	player.position = Vector2(136, 201)
 #	if OS.get_name() == "HTML5":
-	timer.start(1)
 	player.connect("position_changed", system, "set_player_position")
 	player.connect("position_changed", $Level1, "on_player_position_changed")
 	player.connect("add_coin", system, "add_coin")
 	player.connect("add_life", system, "add_life")
 	player.connect("dead_begin", system, "on_player_dead_begin")
-	timer.connect("timeout", self, "_on_Timer_timeout")
 	system.connect("time_remain_changed", hud, "set_time")
 	system.connect("player_position_changed", self, "_on_player_position_changed")
 	system.connect("coin_changed", hud, "set_coin")

@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=2]
+
+[ext_resource path="res://texture/items/star3.tres" type="Texture" id=1]
+[ext_resource path="res://texture/items/star1.tres" type="Texture" id=2]
+[ext_resource path="res://texture/items/star0.tres" type="Texture" id=3]
+[ext_resource path="res://texture/items/star2.tres" type="Texture" id=4]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]

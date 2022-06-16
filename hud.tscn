@@ -68,7 +68,7 @@ margin_top = 24.0
 margin_right = 96.0
 margin_bottom = 32.0
 custom_fonts/font = ExtResource( 4 )
-text = "×"
+text = "*"
 align = 2
 
 [node name="Coin" type="Label" parent="."]

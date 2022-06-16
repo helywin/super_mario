@@ -59,6 +59,8 @@ var invincible_count = 0
 var direction = 1
 
 func die():
+	CHARACTOR_TYPE = 0
+	direction = 1
 	collison.disabled = true
 	mario.animation = "die"
 	$die.play()
