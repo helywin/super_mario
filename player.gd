@@ -40,6 +40,7 @@ func _get_property_list():
 
 signal position_changed(position)
 signal add_coin(coin)
+signal add_life(life)
 signal dead_begin()
 # 公式
 # 纵向速度 = 动态速度 + 0.2 * 关卡引力值
@@ -138,6 +139,9 @@ func down():
 			reborned = true
 			
 
+func life_inc():
+	emit_signal("add_life", 1)
+
 func _ready():
 	match CHARACTOR_TYPE:
 		0: 
@@ -175,13 +179,16 @@ func _physics_process(delta):
 				collider.hit(CHARACTOR_TYPE)
 				$bump.play()
 			elif collider.get_parent().get_name() == "MushroomBricks":
-				if collider.hit(CHARACTOR_TYPE):
-					emit_signal("add_coin", 1)
+				collider.hit(CHARACTOR_TYPE)
 #		print(collider.get_name())
 		if collider.get_name() == "Power":
-					print("powerup")
-					collider.hit()
-					up()
+			print("powerup")
+			collider.hit()
+			up()
+		if collider.get_name() == "Life":
+			print("life")
+			collider.hit()
+			life_inc()
 		if not reborned and collider.get_parent().get_name() == "Enemies":
 			var normal = get_slide_collision(i).normal
 			if abs(normal.x) > abs(normal.y):

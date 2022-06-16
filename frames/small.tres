@@ -30,6 +30,11 @@
 
 [resource]
 animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "die",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 16 ) ],
 "loop": true,
 "name": "stand_1",
@@ -48,11 +53,6 @@ animations = [ {
 "frames": [ ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "walk_1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "die",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
@@ -110,8 +110,8 @@ animations = [ {
 "name": "1_to_0",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "0_to_1",
-"speed": 5.0
+"speed": 10.0
 } ]

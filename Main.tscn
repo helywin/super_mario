@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://hud.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://game_over.tscn" type="PackedScene" id=19]
 [ext_resource path="res://shader/touch_button.tres" type="Shader" id=20]
 [ext_resource path="res://blocks/HittableCoin.tscn" type="PackedScene" id=21]
+[ext_resource path="res://blocks/HitableInvisibleLife.tscn" type="PackedScene" id=22]
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -634,6 +635,9 @@ collision_mask = 1
 [node name="Hitable3" parent="Level1/MushroomBricks" instance=ExtResource( 7 )]
 position = Vector2( 1256, 152 )
 collision_mask = 1
+
+[node name="HitableLife" parent="Level1/MushroomBricks" instance=ExtResource( 22 )]
+position = Vector2( 1024, 152 )
 
 [node name="Solids" type="StaticBody2D" parent="Level1"]
 collision_mask = 30

@@ -35,7 +35,6 @@ stream = ExtResource( 2 )
 
 [node name="CoinBrick" type="AnimatedSprite" parent="Origin" index="0"]
 frames = SubResource( 5 )
-frame = 2
 playing = true
 
 [node name="Brick" type="Sprite" parent="Origin" index="1"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://frames/nokottasu.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://enemies/Nokottasu.gd" type="Script" id=2]
+
+[node name="Nokottasu" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource( 2 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+animation = "walk"
+playing = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -8, -3, -8, 12, 8, 12, 8, -3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
